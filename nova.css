@@ -1,0 +1,396 @@
+/* === Global Styles === */
+body, #buildit_edit, #checkit_edit, #pollit_edit, #quizit_edit, #sketchit_edit, #sortit_edit, #speakit_edit, #thinkit_edit, #videoit_edit {
+  background-color: #f0f5f9 !important;
+}
+
+/* === Fade Animations === */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s;
+}
+.fade-enter, .fade-leave-to .fade-leave-active {
+  opacity: 0;
+}
+.fade-out {
+  opacity: 0;
+}
+.fade-in {
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
+}
+
+/* === Slide Animations === */
+.slide-enter-active, .slide-leave-active {
+  transition: all 0.3s ease;
+}
+.slide-enter, .slide-leave-to .slide-leave-active {
+  transform: translateY(100%);
+}
+#nova-text .slide-enter-active, #nova-text .slide-enter-to {
+  overflow: auto;
+  max-height: initial;
+}
+
+/* === Nova Dot === */
+
+#nova-dot {
+  position: absolute;
+  z-index: 1055;
+  top: -20px;
+  left: 0px;
+  width: 144px;
+  height: 144px;
+  margin: auto;
+  transition: all 300ms ease;
+  animation: fade-in 1s cubic-bezier(0.37, 0, 0.63, 1), hover-animation 3s infinite cubic-bezier(0.37, 0, 0.63, 1);
+  opacity: 1;
+}
+#nova-dot svg {
+  z-index: 1056;
+}
+#nova-dot::before {
+  position: absolute;
+  top: 4px;
+  left: 2px;
+  display: block;
+  width: 140px;
+  height: 140px;
+  content: "";
+  animation: shadow-animation 3s infinite cubic-bezier(0.37, 0, 0.63, 1);
+  opacity: 1;
+  border-radius: 50%;
+  background-color: rgba(150, 150, 150, 0.1);
+}
+@media(max-width: 835px) {
+  #nova-dot {
+      top: -80px;
+ }
+}
+#nova-dot.spin svg {
+   animation: spin 1s cubic-bezier(0.36, 0, 0.66, -0.56);
+ }
+
+ /* === Nova Box === */
+ #nova-box {
+  line-height: 1.4;
+  z-index: 1033;
+  padding: 10px;
+  padding-top: 150px;
+}
+#nova-smoke {
+  position: fixed;
+  z-index: 1032;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: transparent linear-gradient(180deg, #3d4a51b2 0%, #39454ca7 50%, #0c0f105f 100%) 0% 0% no-repeat padding-box;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+#nova-clear {
+  position: fixed;
+  z-index: 1032;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: transparent;
+}
+#nova-block {
+  display: flex;
+  bottom: 0;
+  width: 100%;
+  height: 200px;
+  transition: all 300ms ease;
+  background: transparent linear-gradient(180deg, rgba(35, 42, 47, 0.9) 0%, rgba(43, 53, 59, 0.9) 43%, rgba(50, 60, 66, 0.9) 100%) 0% 0% no-repeat padding-box;
+  box-shadow: 0px -3px 6px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+#nova-text {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 768px;
+  padding: 24px 24px 0 24px; 
+}
+#nova-text .quest-label {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+  position: relative;
+  z-index: 1051;
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 4px;
+  letter-spacing: 0.33px;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1) 0% 0% no-repeat padding-box;
+}
+#nova-text h4 {
+  font-weight: 700;
+}
+#nova-block .btn {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  margin-top: auto;
+  white-space: nowrap;
+  border-color: #126766;
+  background: transparent linear-gradient(180deg, rgba(3, 201, 198, 1) 0%, rgba(0, 198, 198, 1) 100%) 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+}
+#nova-block .btn.nova-button-step {
+  transition: all 300ms ease;
+}
+#nova-block .btn.nova-button-step:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 3px 16px rgba(0, 0, 0, 0.7);
+}
+#nova-block-body {
+  font-size: 16px;
+  position: relative;
+  padding-top: 5px;
+  color: #fff;
+}
+#nova-block-body p:only-child {
+  margin-bottom: 0;
+}
+
+/* === Nova Library === */
+
+#nova-library {
+  position: fixed;
+  z-index: 2000;
+  z-index: -1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transition: opacity 500ms ease, backdrop-filter 500ms ease, -webkit-backdrop-filter 500ms ease;
+  opacity: 0;
+  background: transparent linear-gradient(180deg, rgba(35, 42, 47, 0.9) 0%, rgba(43, 53, 59, 0.9) 43%, rgba(50, 60, 66, 0.9) 100%) 0% 0% no-repeat padding-box;
+  backdrop-filter: blur(0);
+  -webkit-backdrop-filter: blur(0);
+}
+#nova-library.open {
+  z-index: 9999;
+  opacity: 1;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+#nova-library-content .quest-card {
+  display: block;
+  transition: all 300ms ease;
+  transform: scale(1);
+  color: #fff;
+}
+#nova-library-content .quest-card:hover {
+  transform: scale(1.05);
+}
+
+/* === Nova Selected === */
+
+.nova-selected {
+  animation: selected-hover-animation 3s infinite cubic-bezier(0.37, 0, 0.63, 1), selected-shadow-animation 3s infinite cubic-bezier(0.37, 0, 0.63, 1);
+}
+
+.during-nova {
+  overflow: hidden;
+}
+.during-nova .nova-ignore {
+  pointer-events: none;
+}
+
+.nova_1_2 #qctbardiv, .nova_3_1 #qctbardiv {
+  overflow: hidden;
+}
+body.nova_1_2 .nova-selected .card, body.nova_3_1.during-nova .nova-selected>.card.shadow-sm[style] {
+  animation: selected-hover-animation 3s infinite cubic-bezier(0.37, 0, 0.63, 1), selected-shadow-animation 3s infinite cubic-bezier(0.37, 0, 0.63, 1) !important;
+}
+.during-nova .modal-backdrop.show, 
+.nova_1_3 .modal-backdrop.show, 
+.nova_1_4 .modal-backdrop.show {
+  display: none;
+  opacity: 0;
+}
+
+.during-nova #qctModal .close-button, 
+.nova_1_3 #qctModal .close-button, 
+.nova_1_4 #qctModal .close-button {
+  display: none;
+}
+
+.nova_1_3 #qctModal #pollit-1, 
+.nova_1_4 #qctModal #pollit-1, 
+.during-nova #qctModal #pollit-1, 
+.nova_1_3 #qctModal #checkit-2, 
+.nova_1_4 #qctModal #checkit-2, 
+.during-nova #qctModal #checkit-2 {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.nova_1_4 .nova-button-step {
+  display: none;
+  opacity: 0;
+}
+.nova_1_4.during-nova .nova-selected {
+  animation: none;
+}
+.nova_1_6.during-nova #nova-block, .nova_1_7.during-nova #nova-block {
+  height: 140px;
+}
+#buildit_edit.nova_1_6.during-nova #nova-block {
+  height: 200px;
+}
+.nova_1_2 .nova-selected, 
+.nova_3_1 .nova-selected {
+  animation: none;
+}
+.nova_1_9 .nova-selected {
+  animation: none;
+}
+.nova_1_11 .nova-selected {
+  animation: selected-hover-animation 3s infinite cubic-bezier(0.37, 0, 0.63, 1);
+}
+.nova_1_11 .nova-selected .card {
+  animation: selected-shadow-animation 3s infinite cubic-bezier(0.37, 0, 0.63, 1);
+}
+.nova_1_10.during-nova #nova-clear {
+  right: initial;
+  width: 25%;
+}
+.nova_1_10.during-nova nav.fixed-top {
+  pointer-events: none;
+}
+.nova_1_10.during-nova #buildit_iframe {
+  padding-bottom: 200px;
+}
+.nova_1_10.during-nova .nova-selected {
+  z-index: 9999;
+}
+
+
+#qctbardiv.nova-selected .qct-card[style] *, #opening.nova-selected * {
+  color: white !important;
+}
+.during-nova #qctModalContent #checkit-0 {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.during-nova #launch-buttons #launch-teams-lesson {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.during-nova #launchDropdownContainer {
+  box-shadow: none !important;
+}
+.during-nova #launch-buttons #launch-assigned-lesson {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.during-nova #liveToolsModal #teacher-tool-share {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.during-nova #liveToolsModal #teacher-tool-close {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.during-nova #liveToolsModal #teacher-tool-gallery {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.during-nova #liveToolsModal #teacher-tool-timer {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.during-nova #liveToolsModal #teacher-tool-nav {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.during-nova #liveToolsModal #teacher-tool-teams {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.during-nova #liveToolsModal #teacher-tool-results {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.during-nova #liveToolsModal #teacher-tool-close-lesson {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.during-nova #liveToolsModal #teacher-tool-download {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.during-nova #endAssignmentModal #lesson-close-cancel {
+  pointer-events: none;
+  opacity: 0.5;
+}
+#lesson-join-details.nova-selected {
+  border-radius: 4px;
+}
+
+.during-nova.nova_3_1 .nova-selected, 
+.during-nova.nova_3_1 .nova-selected .text-gray-800 {
+  color: #fff !important;
+}
+
+/* === Keyframes === */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes fade-in {
+  0% {
+      top: -20px;
+      opacity: 0;
+ }
+  100% {
+      top: -20px;
+      opacity: 1;
+ }
+}
+@keyframes hover-animation {
+  0%, 100% {
+      transform: translateY(0) scale(1);
+ }
+  50% {
+      transform: translateY(-4px) scale(1.1);
+ }
+}
+@keyframes shadow-animation {
+  0%, 100% {
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+ }
+  50% {
+      box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.7);
+ }
+}
+@keyframes selected-hover-animation {
+  0%, 100% {
+      transform: translateY(0);
+ }
+  50% {
+      transform: translateY(-4px);
+ }
+}
+@keyframes selected-shadow-animation {
+  0%, 100% {
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+ }
+  50% {
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
+ }
+}
